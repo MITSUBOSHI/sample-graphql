@@ -9,5 +9,17 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :digimons, [::Types::DigimonType], null: false
+    def digimons
+      Digimon.all
+    end
+
+    field :digimon, ::Types::DigimonType, null: false do
+      argument :id, Int, required: false
+    end
+    def digimon(id:)
+      Digimon.find(id)
+    end
   end
 end
