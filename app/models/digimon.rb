@@ -2,7 +2,7 @@ class Digimon < ActiveHash::Base
   include ActiveHash::Associations
 
   has_one :child_digimon
-  delegate :child, to: :child
+  delegate :child, to: :child_digimon, allow_nil: true
   alias_method :chosen_child, :child
 
   self.data = [
