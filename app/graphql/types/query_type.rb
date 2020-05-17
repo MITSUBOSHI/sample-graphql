@@ -21,5 +21,17 @@ module Types
     def digimon(id:)
       Digimon.find(id)
     end
+
+    field :children, [::Types::ChildType], null: false
+    def children
+      Child.all
+    end
+
+    field :child, ::Types::ChildType, null: false do
+      argument :id, Int, required: false
+    end
+    def child(id:)
+      Child.find(id)
+    end
   end
 end
